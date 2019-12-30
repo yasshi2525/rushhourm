@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package rushhour;
+option go_package = "pb";
+
+message RegisterRequest {
+    string address = 1;
+}
+
+message RegisterResponse {
+    int64 level = 1;
+}
+
+service RegisterService {
+    rpc Register (RegisterRequest) returns (RegisterResponse) {}
+}
