@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package rushhour;
+option go_package = "pb";
+
+import "pb/entity.proto";
+
+message FindRequest {
+    int64 id = 1;
+}
+
+message FindInRequest {
+    Point center = 1;
+    int64 scale = 2;
+}
+
+message DeleteRequest {
+    int64 id = 1;
+}
