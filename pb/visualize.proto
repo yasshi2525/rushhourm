@@ -3,7 +3,16 @@ syntax = "proto3";
 package rushhour;
 option go_package = "pb";
 
-import "pb/entity.proto";
+import "pb/common.proto";
+
+message Delegate {
+    int64 scale = 1;
+    int64 parentID = 2;
+    oneof child {
+        int64 childID = 3;
+        int64 multi = 4;
+    }
+}
 
 message FindRequest {
     int64 id = 1;
@@ -12,8 +21,4 @@ message FindRequest {
 message FindInRequest {
     Point center = 1;
     int64 scale = 2;
-}
-
-message DeleteRequest {
-    int64 id = 1;
 }

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package rushhour;
+option go_package = "pb";
+
+message Point {
+    double x = 1;
+    double y = 2;
+}

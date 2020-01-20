@@ -31,7 +31,7 @@ func TestCreateResidence(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()
 
-	client := mock_pb.NewMockResidenceServiceClient(ctrl)
+	client := mock_pb.NewMockModelServiceClient(ctrl)
 
 	request := &pb.Residence{
 		Id:       1,
@@ -42,7 +42,7 @@ func TestCreateResidence(t *testing.T) {
 
 	client.
 		EXPECT().
-		Create(
+		CreateResidence(
 			gomock.Any(), &rpcMsg{msg: request},
 		).
 		Return(request, nil)
@@ -50,8 +50,8 @@ func TestCreateResidence(t *testing.T) {
 	testCreateResidence(t, client)
 }
 
-func testCreateResidence(t *testing.T, client pb.ResidenceServiceClient) {
-	res, err := client.Create(context.Background(), &pb.Residence{
+func testCreateResidence(t *testing.T, client pb.ModelServiceClient) {
+	res, err := client.CreateResidence(context.Background(), &pb.Residence{
 		Id:       1,
 		OwnerID:  1,
 		Pos:      &pb.Point{X: 1, Y: 1},
